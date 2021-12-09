@@ -8,6 +8,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "index.bundle.js",
+    publicPath: "/",
   },
   // Rules of how webpack will take our files, complie & bundle them for the browser
   module: {
