@@ -1,5 +1,7 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { Spin } from "antd";
+import { LoaderContainer } from "./App.style";
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
 const ProductDetails = React.lazy(() => import("./pages/ProductDetails"));
 
@@ -8,7 +10,13 @@ const App = () => {
     <BrowserRouter>
       <Outlet />
       <div>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <LoaderContainer>
+              <Spin tip="Loading..." size="large" />
+            </LoaderContainer>
+          }
+        >
           <Routes>
             <Route path="home" element={<Dashboard />} />
             <Route
