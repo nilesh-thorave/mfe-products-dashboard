@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
-import { Descriptions, Image, Rate } from "antd";
+import { useParams, useNavigate } from "react-router-dom";
+import { Descriptions, Image, Rate, Button } from "antd";
 import productsList from "../../mocks/products";
 
 import { ProductImageSection } from "./ProductDetails.style";
@@ -9,6 +9,7 @@ const fallBackImage =
 
 const ProductDetails = () => {
   const { productId } = useParams();
+  const navigate = useNavigate();
   const product = productsList.find((product) => product.id == productId);
   return (
     <div>
@@ -35,6 +36,9 @@ const ProductDetails = () => {
                 {product.description}
               </Descriptions.Item>
             </Descriptions>
+            <Button type="primary" onClick={() => navigate("/my-cart")}>
+              Add to Cart
+            </Button>
           </section>
         </>
       )}
